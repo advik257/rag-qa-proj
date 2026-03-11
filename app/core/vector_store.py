@@ -62,7 +62,9 @@ class VectorStoreService:
             embedding=self.embeddings,
         )
 
-        logger.info(f"VectorStoreService initialized for collection: {self.collection_name}")
+        logger.info(
+            f"VectorStoreService initialized for collection: {self.collection_name}"
+        )
 
     def _ensure_collection(self) -> None:
         """Ensure the collection exists, create if not."""
@@ -183,7 +185,7 @@ class VectorStoreService:
             info = self.client.get_collection(self.collection_name)
             return {
                 "name": self.collection_name,
-                "points_count": info.points_count, # how many collections are avilable
+                "points_count": info.points_count,  # how many collections are avilable
                 "indexed_vectors_count": info.indexed_vectors_count,
                 "status": info.status.value,
             }

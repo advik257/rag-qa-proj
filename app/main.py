@@ -90,8 +90,10 @@ app.include_router(query.router)
 #     with open("static/index.html", "r") as f:
 #         return f.read()
 
+
 async def root():
     return FileResponse("static/index.html")
+
 
 @app.exception_handler(Exception)
 async def global_exception_handler(request: Request, exc: Exception):
@@ -110,6 +112,7 @@ async def global_exception_handler(request: Request, exc: Exception):
 
 if __name__ == "__main__":
     import uvicorn
+
     load_dotenv()
     uvicorn.run(
         "app.main:app",

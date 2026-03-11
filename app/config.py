@@ -18,8 +18,8 @@ class Settings(BaseSettings):
     # groq Configuration
     groq_api_key: str
 
-    #cohere Configuration
-    cohere_api_key :str
+    # cohere Configuration
+    cohere_api_key: str
 
     # Qdrant Cloud Configuration
     qdrant_url: str

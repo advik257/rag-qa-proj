@@ -17,6 +17,7 @@ from app.utils.logger import get_logger
 
 logger = get_logger(__name__)
 
+
 class DocumentProcessor:
     """Process documents for RAG pipeline."""
 
@@ -48,7 +49,7 @@ class DocumentProcessor:
             f"DocumentProcessor initialized with chunk_size={self.chunk_size}, "
             f"chunk_overlap={self.chunk_overlap}"
         )
-    
+
     def load_pdf(self, file_path: str | Path) -> list[Document]:
         """Load a PDF file.
 
@@ -66,7 +67,7 @@ class DocumentProcessor:
 
         logger.info(f"Loaded {len(documents)} pages from {file_path.name}")
         return documents
-    
+
     def load_text(self, file_path: str | Path) -> list[Document]:
         """Load a text file.
 
@@ -84,7 +85,7 @@ class DocumentProcessor:
 
         logger.info(f"Loaded text file: {file_path.name}")
         return documents
-    
+
     def load_csv(self, file_path: str | Path) -> list[Document]:
         """Load a CSV file.
 
@@ -102,7 +103,7 @@ class DocumentProcessor:
 
         logger.info(f"Loaded {len(documents)} rows from {file_path.name}")
         return documents
-    
+
     def load_file(self, file_path: str | Path) -> list[Document]:
         """Load a file based on its extension.
 
@@ -131,7 +132,7 @@ class DocumentProcessor:
         }
 
         return loaders[extension](file_path)
-    
+
     def load_from_upload(
         self,
         file: BinaryIO,
@@ -189,7 +190,7 @@ class DocumentProcessor:
 
         logger.info(f"Created {len(chunks)} chunks")
         return chunks
-    
+
     def process_file(self, file_path: str | Path) -> list[Document]:
         """Load and split a file in one step.
 
@@ -201,7 +202,7 @@ class DocumentProcessor:
         """
         documents = self.load_file(file_path)
         return self.split_documents(documents)
-    
+
     def process_upload(
         self,
         file: BinaryIO,
@@ -218,9 +219,3 @@ class DocumentProcessor:
         """
         documents = self.load_from_upload(file, filename)
         return self.split_documents(documents)
-
-
-
-
-
-        

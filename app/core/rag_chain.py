@@ -4,7 +4,8 @@ from langchain_core.documents import Document
 from langchain_core.output_parsers import StrOutputParser
 from langchain_core.prompts import ChatPromptTemplate
 from langchain_core.runnables import RunnablePassthrough
-#from langchain_openai import ChatOpenAI
+
+# from langchain_openai import ChatOpenAI
 from langchain_groq import ChatGroq
 
 from app.config import get_settings
@@ -212,7 +213,9 @@ class RAGChain:
             logger.error(f"Error processing async query with sources: {e}")
             raise
 
-    async def aquery_with_evaluation(self, question: str, include_sources: bool = True) -> dict:
+    async def aquery_with_evaluation(
+        self, question: str, include_sources: bool = True
+    ) -> dict:
         """Execute async RAG query with RAGAS evaluation.
 
         Args:
